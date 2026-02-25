@@ -1,0 +1,32 @@
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://picsum.photos/1600/900?blur") center/cover;
+}
+
+.event-card {
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 20px;
+}
+
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode .navbar {
+    background-color: black !important;
+}

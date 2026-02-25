@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">EventHub</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#admin">Admin</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="btn btn-outline-light ms-3" id="toggleMode">Dark Mode</button>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="hero text-center text-white d-flex align-items-center"></section>
+
+<div class="row mb-4">
+  <div class="col-md-6 mx-auto">
+    <input type="text" id="searchEvent" class="form-control" placeholder="Search events...">
+  </div>
+</div>
+
+
+<section id="events" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Upcoming Events</h2>
+    <div class="row" id="eventList">
+
+
+<div class="text-center mb-4">
+  <button class="btn btn-outline-primary filterBtn" data-filter="all">All</button>
+  <button class="btn btn-outline-primary filterBtn" data-filter="tech">Tech</button>
+  <button class="btn btn-outline-primary filterBtn" data-filter="music">Music</button>
+  <button class="btn btn-outline-primary filterBtn" data-filter="workshop">Workshop</button>
+  <button class="btn btn-outline-primary filterBtn" data-filter="business">Business</button>
+</div>
+
+     <div class="row" id="eventList">
+
+  <!-- Tech Event -->
+  <div class="col-md-4 mb-4 event-card" data-category="tech">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?10" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Tech Conference 2026</h5>
+        <p>Date: March 30, 2026</p>
+        <button class="btn btn-primary registerBtn" data-event="Tech Conference 2026">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Music Event -->
+  <div class="col-md-4 mb-4 event-card" data-category="music">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?11" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Summer Music Festival</h5>
+        <p>Date: April 15, 2026</p>
+        <button class="btn btn-primary registerBtn" data-event="Summer Music Festival">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workshop -->
+  <div class="col-md-4 mb-4 event-card" data-category="workshop">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?12" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Web Development Workshop</h5>
+        <p>Date: May 10, 2026</p>
+        <button class="btn btn-primary registerBtn" data-event="Web Development Workshop">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Event -->
+  <div class="col-md-4 mb-4 event-card" data-category="business">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?13" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Startup Pitch Day</h5>
+        <p>Date: June 5, 2026</p>
+        <button class="btn btn-primary registerBtn" data-event="Startup Pitch Day">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Workshop -->
+  <div class="col-md-4 mb-4 event-card" data-category="tech">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?14" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">AI & Machine Learning Bootcamp</h5>
+        <p>Date: July 12, 2026</p>
+        <button class="btn btn-primary registerBtn" data-event="AI & Machine Learning Bootcamp">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cultural Event -->
+  <div class="col-md-4 mb-4 event-card" data-category="music">
+    <div class="card">
+      <img src="https://picsum.photos/400/250?15" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Cultural Night 2026</h5>
+        <p>Date: August 20, 2026</p>
+        <button class="btn btn-primary registerBtn" data-event="Cultural Night 2026">Register</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Registration Modal -->
+<div class="modal fade" id="registerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Event Registration</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="registerForm">
+          <input type="hidden" id="eventName">
+          <div class="mb-3">
+            <label>Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label>Phone</label>
+            <input type="text" class="form-control" id="phone" required>
+          </div>
+          <button type="submit" class="btn btn-success w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-light py-5">
+  <div class="container text-center">
+    <h2>Contact Us</h2>
+    <p>Email: info@eventhub.com</p>
+  </div>
+</section>
+
+<section id="about" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2>About EventHub</h2>
+    <p>
+      EventHub is a modern event management platform designed to simplify
+      event discovery and registration. We organize tech conferences,
+      music festivals, workshops, and business meetups.
+    </p>
+  </div>
+</section>
+<section id="admin" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Admin - Registrations</h2>
+    <button class="btn btn-primary mb-3" id="viewRegistrations">View Registrations</button>
+    <button class="btn btn-success mb-3" id="exportData">Export Data</button>
+    <div id="registrationTable"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center p-3">
+  © 2026 EventHub | All Rights Reserved
+</footer>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
