@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    // Open Modal
+    
     $(".registerBtn").click(function(){
         var eventName = $(this).data("event");
         $("#eventName").val(eventName);
@@ -8,7 +8,7 @@ $(document).ready(function(){
         myModal.show();
     });
 
-    // Registration Submit
+    
     $("#registerForm").submit(function(e){
         e.preventDefault();
 
@@ -33,7 +33,7 @@ $(document).ready(function(){
         location.reload();
     });
 
-    // 🔍 Search Events
+
     $("#searchEvent").on("keyup", function(){
         let value = $(this).val().toLowerCase();
         $(".event-card").filter(function(){
@@ -41,7 +41,7 @@ $(document).ready(function(){
         });
     });
 
-    // ⏳ Countdown Timer
+
     function updateCountdown(){
         let eventDate = new Date("March 30, 2026 10:00:00").getTime();
         let now = new Date().getTime();
@@ -59,12 +59,12 @@ $(document).ready(function(){
 
     setInterval(updateCountdown, 1000);
 
-    // 🌙 Dark Mode
+
     $("#toggleMode").click(function(){
         $("body").toggleClass("dark-mode");
     });
 
-    // 👀 View Registrations
+    
     $("#viewRegistrations").click(function(){
         let users = JSON.parse(localStorage.getItem("registrations")) || [];
         let table = `
@@ -92,7 +92,7 @@ $(document).ready(function(){
         $("#registrationTable").html(table);
     });
 
-    // 📥 Export JSON
+
     $("#exportData").click(function(){
         let data = localStorage.getItem("registrations");
         let blob = new Blob([data], {type: "application/json"});
@@ -103,7 +103,7 @@ $(document).ready(function(){
         a.download = "registrations.json";
         a.click();
     });
- // 🎯 Category Filter
+ 
 $(".filterBtn").click(function(){
     let filter = $(this).data("filter");
 
